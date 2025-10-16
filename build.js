@@ -16,8 +16,8 @@ if (!fs.existsSync('dist/js')) {
   fs.mkdirSync('dist/js');
 }
 
-// Compile SASS
-exec('npm run build', (error, stdout, stderr) => {
+// Compile SASS and copy JS files using npm scripts
+exec('npm run build:sass && npm run build:sass-min && npm run copy:js', (error, stdout, stderr) => {
   if (error) {
     console.error(`Error: ${error.message}`);
     return;
@@ -30,15 +30,5 @@ exec('npm run build', (error, stdout, stderr) => {
   
   console.log('Build completed successfully!');
   console.log('Output files are in the dist/ directory');
-  
-  // Copy JS files
-  exec('cp src/js/*.js dist/js/', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error copying JS files: ${error.message}`);
-      return;
-    }
-    
-    console.log('JavaScript files copied to dist/js/');
-    console.log('Website is ready for deployment!');
-  });
+  console.log('Website is ready for deployment!');
 });
