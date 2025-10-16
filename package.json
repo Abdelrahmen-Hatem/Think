@@ -9,7 +9,8 @@
     "copy:js": "xcopy src\\js\\* dist\\js\\ /Y",
     "watch:sass": "sass src/scss/main.scss dist/css/main.css --watch",
     "dev": "npm-run-all --parallel watch:sass",
-    "build": "npm-run-all build:sass build:sass-min copy:js"
+    "build": "npm run build:sass && npm run build:sass-min && npm run copy:js"
+
   },
   "keywords": [
     "agency",
