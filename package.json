@@ -11,6 +11,7 @@
     "dev": "npm-run-all --parallel watch:sass",
     "build": "npm run build:sass && npm run build:sass-min && npm run copy:js"
 
+
   },
   "keywords": [
     "agency",
