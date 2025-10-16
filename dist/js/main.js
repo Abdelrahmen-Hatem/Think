@@ -124,13 +124,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // Form submission handling
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
-      // In a real application, you would send the form data to a server here
-      // For now, we'll just show an alert
-      alert('Thank you for your message! We will get back to you soon.');
-      contactForm.reset();
+      // Get form data
+      const formData = new FormData(contactForm);
+      
+      try {
+        // Send form data to Formspree using fetch API
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          // Show success message
+          alert('Thank you for your message! We will get back to you soon.');
+          contactForm.reset();
+        } else {
+          // Show error message
+          const data = await response.json();
+          if (data.errors) {
+            alert('Error: ' + data.errors.map(error => error.message).join(', '));
+          } else {
+            alert('Oops! There was a problem submitting your form. Please try again.');
+          }
+        }
+      } catch (error) {
+        // Show error message if fetch fails
+        alert('Oops! There was a problem submitting your form. Please try again.');
+      }
     });
   }
   
