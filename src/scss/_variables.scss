@@ -1,0 +1,30 @@
+// Color Palette
+$bg-dark: #0B0B0B;
+$black: #000000;
+$off-white: #F8F8F8;
+$accent-blue: #00AEEF;
+
+// Typography
+$font-primary: 'Poppins', 'Montserrat', sans-serif;
+$font-secondary: 'Cairo', 'Tajawal', sans-serif;
+
+// Spacing & Layout
+$max-width: 1200px;
+$container-padding: 20px;
+$section-spacing: 80px;
+
+// Breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1280px;
+
+// Z-index layers
+$z-index-header: 100;
+$z-index-modal: 200;
+
+:root {
+  --bg-dark: #{$bg-dark};
+  --black: #{$black};
+  --off-white: #{$off-white};
+  --accent: #{$accent-blue};
+}
